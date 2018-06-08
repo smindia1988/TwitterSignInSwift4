@@ -4,7 +4,7 @@ Twitter SignIn, Share, Email Request with Block based structure, Swift 4 support
 ## Steps:
 - Install Twitter Kit Using CocoaPods: https://github.com/twitter/twitter-kit-ios/wiki/Installation
 
-- Add single class SMTwitterSignIn+Block.swift into your project
+- Add single class **SMTwitterSignIn+Block.swift** into your project
 
 - Create Twitter app in dashboard and get your CONSUMER_KEY and CUSTUMER_SECRET_KEY from: https://apps.twitter.com/ 
 
