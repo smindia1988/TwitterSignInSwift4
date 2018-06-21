@@ -20,18 +20,7 @@ Click the + button, and add your consumerkey as a URL scheme.
 
 For example: twitterkit-YOUR_CONSUMER_KEY
 
-- MUST: Add into Info.plist LSApplicationQueriesSchemes as below:
-
-<key>LSApplicationQueriesSchemes
-
-</key><array>
-		
-<string>twitter</string>
-
-<string>twitterauth</string>
-
-</array>
-
+- MUST: Add into Info.plist LSApplicationQueriesSchemes. See the Configure Info.Plist in https://github.com/twitter/twitter-kit-ios/wiki/Installation
 
 - Put Open URL delegate methods into your project delegate class. Methods are added in AppDelegate.swift
 
