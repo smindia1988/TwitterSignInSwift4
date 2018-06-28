@@ -27,8 +27,8 @@ import TwitterKit
 import TwitterCore
 
 private typealias loginCompletionHandler = ((_ statusMessage:String,_ isSuccess:Bool)->())?  //For internal login check callBack
-typealias completionHandler = ((_ session:TWTRSession?, _ statusMessage:String?, _ isSuccess:Bool?)->())?  //For Login and Share callBack
-typealias emailCompletionHandler = ((_ session:TWTRSession?, _ email:String?, _ statusMessage:String?, _ isSuccess:Bool?)->())? //For Email Permission callBack
+typealias completionHandler = ((_ session:TWTRAuthSession?, _ statusMessage:String?, _ isSuccess:Bool?)->())?  //For Login and Share callBack
+typealias emailCompletionHandler = ((_ session:TWTRAuthSession?, _ email:String?, _ statusMessage:String?, _ isSuccess:Bool?)->())? //For Email Permission callBack
 
 class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
     
@@ -59,7 +59,7 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
             }
             
             let store = TWTRTwitter.sharedInstance().sessionStore
-            completionHandler!(store.session() as? TWTRSession,statusMessage,isSuccess)
+            completionHandler!(store.session(),statusMessage,isSuccess)
         }
     }
     
@@ -85,20 +85,20 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
                 client.requestEmail { email, error in
                     
                     if((error) != nil){
-                        emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, nil, error?.localizedDescription, false)
+                        emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session(), nil, error?.localizedDescription, false)
                         return
                     }
                     
                     if (email != nil) {
                         print("User Email: \(email ?? "Not found")");
-                        emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, email, "Requested email successfully", true)
+                        emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session(), email, "Requested email successfully", true)
                     }
                 }
             }
             else{
                 //Failed
                 print(statusMessage)
-                emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, nil, statusMessage, false)
+                emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session(), nil, statusMessage, false)
             }
         }
     }
@@ -167,5 +167,4 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
     }
     
 }
-
 

@@ -29,9 +29,39 @@ class ViewController: UIViewController{
     @IBAction func btnTwitterLogIn(_ sender: Any) {
         
         // Sign-In
-        SMTwitterSignIn.sharedInstance.signIn { (session, statusMessage, isSuccess) in
-            print("Login success => User Id: \(String(describing: session?.userID))")
+//        SMTwitterSignIn.sharedInstance.signIn { (session, statusMessage, isSuccess) in
+//            print("Login success => User Id: \(String(describing: session?.userID))")
+//        }
+        
+        //Sign-In + Email Request
+        var strUserId : String = ""
+        var strUserEmail: String = ""
+        
+        SMTwitterSignIn.sharedInstance.signOut()
+        SMTwitterSignIn.sharedInstance.signIn { (session, statusMessageLogin, isSuccess) in
+            
+            strUserId = (session?.userID)!
+            print("Login success, Requesing user email id...")
+            
+            //Get user email...
+            SMTwitterSignIn.sharedInstance.requestTwitterEmail { (session, email, statusMessageEmail, isSuccess) in
+                
+                if(isSuccess)!{
+                    //Procedd on success...
+                    print(statusMessageEmail! as Any)
+                    strUserEmail = email!
+                }
+                else{
+                    //Stop on fail...
+                    print(statusMessageEmail! as Any)
+                }
+                
+                print("User Id: \(strUserId)")
+                print("User Email: \(strUserEmail)")
+                print("\(statusMessageLogin!) \n User Id: \(strUserId) \n User Email: \(strUserEmail)")
+            }
         }
+        
     }
     
     @IBAction func btnTwitterSharePressed(_ sender: UIButton) {
