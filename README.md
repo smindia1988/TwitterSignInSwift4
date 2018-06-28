@@ -4,7 +4,7 @@ Twitter SignIn, Share, Email Request with Block based structure, Swift 4 support
 ## Steps:
 - Install Twitter Kit Using CocoaPods: https://github.com/twitter/twitter-kit-ios/wiki/Installation
 
-- Add single class SMTwitterSignIn+Block.swift into your project
+- Add single class **SMTwitterSignIn+Block.swift** into your project
 
 - Create Twitter app in dashboard and get your CONSUMER_KEY and CUSTUMER_SECRET_KEY from: https://apps.twitter.com/ 
 
@@ -19,6 +19,21 @@ Open your project configuration: double-click the project name in the left tree 
 Click the + button, and add your consumerkey as a URL scheme.
 
 For example: twitterkit-YOUR_CONSUMER_KEY
+
+**[MUST DO]** 
+- Add into Info.plist LSApplicationQueriesSchemes. See the Configure Info.Plist in https://github.com/twitter/twitter-kit-ios/wiki/Installation
+
+**[MUST DO]**
+- **Add CallbackURL into the twitter app dashboard as below format:**
+
+**For iOS:** 
+twitterkit-CONSUMERKEY://
+
+**For Android:**
+twittersdk://                               
+
+[ **Note:** Please replace your consumer key in place of words "CONSUMERKEY" in above format]
+
 
 - Put Open URL delegate methods into your project delegate class. Methods are added in AppDelegate.swift
 
@@ -92,6 +107,11 @@ For example: twitterkit-YOUR_CONSUMER_KEY
 https://github.com/twitter/twitter-kit-ios/wiki/Installation
 
 https://dev.twitter.com/web/sign-in/implementing
+
+https://twittercommunity.com/t/ios-twitter-login-error-code-415/107775
+
+https://twittercommunity.com/t/action-required-sign-in-with-twitter-users-must-whitelist-callback-urls/105342
+
 
 
 
