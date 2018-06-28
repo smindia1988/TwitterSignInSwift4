@@ -45,8 +45,7 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
     
     func initalise(){
         // Initialize Twitter Sign-In
-        //Twitter.sharedInstance().start(withConsumerKey: "Z506UKo0lOFc7nmP4NWOVBnbe", consumerSecret: "QyxJK6MCmuf58mjOiXHWLJDMTBuTyzk2aX1XNtsKtWHAQj52f9")
-        TWTRTwitter.sharedInstance().start(withConsumerKey: "pTDcIOxGMGuWfXO3Bghmv4twL", consumerSecret: "TuHYIop6bIkP3nK2q7XmxG8o864EGgJL2jWjyposIwqv5Qwf5E")
+        TWTRTwitter.sharedInstance().start(withConsumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CONSUMER_SECRET_KEY")
     }
     
     func signIn(completionHandler:completionHandler){
