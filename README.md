@@ -108,5 +108,10 @@ https://github.com/twitter/twitter-kit-ios/wiki/Installation
 
 https://dev.twitter.com/web/sign-in/implementing
 
+https://twittercommunity.com/t/ios-twitter-login-error-code-415/107775
+
+https://twittercommunity.com/t/action-required-sign-in-with-twitter-users-must-whitelist-callback-urls/105342
+
+
 
 
