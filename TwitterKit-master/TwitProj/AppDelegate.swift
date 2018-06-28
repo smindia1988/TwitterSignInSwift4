@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //MARK:- Twitter CallBack Method
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        if Twitter.sharedInstance().application(app, open: url, options: options) {
+        if TWTRTwitter.sharedInstance().application(app, open: url, options: options) {
             return true
         }
         // Your other open URL handlers follow […]

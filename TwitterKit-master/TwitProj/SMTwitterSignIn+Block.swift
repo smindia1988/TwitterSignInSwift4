@@ -31,7 +31,7 @@ typealias completionHandler = ((_ session:TWTRSession?, _ statusMessage:String?,
 typealias emailCompletionHandler = ((_ session:TWTRSession?, _ email:String?, _ statusMessage:String?, _ isSuccess:Bool?)->())? //For Email Permission callBack
 
 class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
-          
+    
     static let sharedInstance = SMTwitterSignIn()
     var globalHandler : completionHandler!
     let topVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController
@@ -45,7 +45,8 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
     
     func initalise(){
         // Initialize Twitter Sign-In
-        Twitter.sharedInstance().start(withConsumerKey: "YOUR_CONSUMER_KEY", consumerSecret: "YOUR_CUSTUMER_SECRET")
+        //Twitter.sharedInstance().start(withConsumerKey: "Z506UKo0lOFc7nmP4NWOVBnbe", consumerSecret: "QyxJK6MCmuf58mjOiXHWLJDMTBuTyzk2aX1XNtsKtWHAQj52f9")
+        TWTRTwitter.sharedInstance().start(withConsumerKey: "pTDcIOxGMGuWfXO3Bghmv4twL", consumerSecret: "TuHYIop6bIkP3nK2q7XmxG8o864EGgJL2jWjyposIwqv5Qwf5E")
     }
     
     func signIn(completionHandler:completionHandler){
@@ -58,14 +59,14 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
                 print(statusMessage)
             }
             
-            let store = Twitter.sharedInstance().sessionStore
+            let store = TWTRTwitter.sharedInstance().sessionStore
             completionHandler!(store.session() as? TWTRSession,statusMessage,isSuccess)
         }
     }
     
     func signOut(){
         
-        let store = Twitter.sharedInstance().sessionStore
+        let store = TWTRTwitter.sharedInstance().sessionStore
         
         if let userID = store.session()?.userID {
             store.logOutUserID(userID)
@@ -85,20 +86,20 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
                 client.requestEmail { email, error in
                     
                     if((error) != nil){
-                        emailCompletionHandler!(Twitter.sharedInstance().sessionStore.session() as? TWTRSession, nil, error?.localizedDescription, false)
+                        emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, nil, error?.localizedDescription, false)
                         return
                     }
                     
                     if (email != nil) {
                         print("User Email: \(email ?? "Not found")");
-                        emailCompletionHandler!(Twitter.sharedInstance().sessionStore.session() as? TWTRSession, email, "Requested email successfully", true)
+                        emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, email, "Requested email successfully", true)
                     }
                 }
             }
             else{
                 //Failed
                 print(statusMessage)
-                emailCompletionHandler!(Twitter.sharedInstance().sessionStore.session() as? TWTRSession, nil, statusMessage, false)
+                emailCompletionHandler!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, nil, statusMessage, false)
             }
         }
     }
@@ -120,7 +121,7 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
             else{
                 //Stop on fail...
                 print(statusMessage)
-                self.globalHandler!!(Twitter.sharedInstance().sessionStore.session() as? TWTRSession, statusMessage, isSuccess)
+                self.globalHandler!!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, statusMessage, isSuccess)
             }
         }
     }
@@ -129,12 +130,12 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
         
         //globalHandler!!(signIn, user, error)
         
-        if (Twitter.sharedInstance().sessionStore.hasLoggedInUsers()) {
+        if (TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers()) {
             // App must have at least one logged-in user to compose a Tweet
             loginCompletionHandler!("User Already Logged In", true)
         } else {
             // Log in, and then check again
-            Twitter.sharedInstance().logIn { session, error in
+            TWTRTwitter.sharedInstance().logIn { session, error in
                 
                 if((error) != nil){
                     loginCompletionHandler!((error?.localizedDescription)!, false)
@@ -150,20 +151,22 @@ class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
         }
     }
     
-
-    //MARK:- TWTRComposerViewControllerDelegate    
+    
+    //MARK:- TWTRComposerViewControllerDelegate
     func composerDidCancel(_ controller: TWTRComposerViewController) {
         print("composerDidCancel, composer cancelled")
-        self.globalHandler!!(Twitter.sharedInstance().sessionStore.session() as? TWTRSession, "composerDidCancel, composer cancelled", false)
+        self.globalHandler!!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, "composerDidCancel, composer cancelled", false)
     }
     
     func composerDidSucceed(_ controller: TWTRComposerViewController, with tweet: TWTRTweet) {
         print("composerDidSucceed, tweet successfully published")
-        self.globalHandler!!(Twitter.sharedInstance().sessionStore.session() as? TWTRSession, "composerDidSucceed, tweet successfully published", true)
+        self.globalHandler!!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, "composerDidSucceed, tweet successfully published", true)
     }
     func composerDidFail(_ controller: TWTRComposerViewController, withError error: Error) {
         print("composerDidFail, tweet publish failed == \(error.localizedDescription)")
-        self.globalHandler!!(Twitter.sharedInstance().sessionStore.session() as? TWTRSession, error.localizedDescription, false)
+        self.globalHandler!!(TWTRTwitter.sharedInstance().sessionStore.session() as? TWTRSession, error.localizedDescription, false)
     }
     
 }
+
+
