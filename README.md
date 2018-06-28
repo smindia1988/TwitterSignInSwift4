@@ -20,11 +20,11 @@ Click the + button, and add your consumerkey as a URL scheme.
 
 For example: twitterkit-YOUR_CONSUMER_KEY
 
-- **MUST:** Add into Info.plist LSApplicationQueriesSchemes. See the Configure Info.Plist in https://github.com/twitter/twitter-kit-ios/wiki/Installation
+**[MUST DO]** 
+- Add into Info.plist LSApplicationQueriesSchemes. See the Configure Info.Plist in https://github.com/twitter/twitter-kit-ios/wiki/Installation
 
-- **MUST:** 
-**[Mandatory]**
-- Add CallbackURL into the twitter app dashboard as below format:
+**[MUST DO]**
+- **Add CallbackURL into the twitter app dashboard as below format:**
 
 **For iOS:** 
 twitterkit-CONSUMERKEY://
