@@ -14,6 +14,7 @@
 		45635C261FFA4EFE0052ADBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45635C251FFA4EFE0052ADBD /* Assets.xcassets */; };
 		45635C291FFA4EFE0052ADBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45635C271FFA4EFE0052ADBD /* LaunchScreen.storyboard */; };
 		C13BCB9F20CA8013002A4C3D /* SMTwitterSignIn+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13BCB9E20CA8013002A4C3D /* SMTwitterSignIn+Block.swift */; };
+		C145E34820E672F700E787AF /* Alert+Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = C145E34720E672F700E787AF /* Alert+Block.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7E40A5D9BE26540C5C875452 /* Pods_TwitProj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitProj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88961633E9D87827F2792E48 /* Pods-TwitProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitProj.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitProj/Pods-TwitProj.release.xcconfig"; sourceTree = "<group>"; };
 		C13BCB9E20CA8013002A4C3D /* SMTwitterSignIn+Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMTwitterSignIn+Block.swift"; sourceTree = "<group>"; };
+		C145E34720E672F700E787AF /* Alert+Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alert+Block.swift"; sourceTree = "<group>"; };
 		D940B4177A562609A5332549 /* Pods-TwitProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitProj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitProj/Pods-TwitProj.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 		45635C1D1FFA4EFE0052ADBD /* TwitProj */ = {
 			isa = PBXGroup;
 			children = (
+				C145E34720E672F700E787AF /* Alert+Block.swift */,
 				C13BCB9E20CA8013002A4C3D /* SMTwitterSignIn+Block.swift */,
 				45635C1E1FFA4EFE0052ADBD /* AppDelegate.swift */,
 				45635C201FFA4EFE0052ADBD /* ViewController.swift */,
@@ -231,6 +234,7 @@
 			files = (
 				C13BCB9F20CA8013002A4C3D /* SMTwitterSignIn+Block.swift in Sources */,
 				45635C211FFA4EFE0052ADBD /* ViewController.swift in Sources */,
+				C145E34820E672F700E787AF /* Alert+Block.swift in Sources */,
 				45635C1F1FFA4EFE0052ADBD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -40,28 +40,35 @@ class ViewController: UIViewController{
         SMTwitterSignIn.sharedInstance.signOut()
         SMTwitterSignIn.sharedInstance.signIn { (session, statusMessageLogin, isSuccess) in
             
-            strUserId = (session?.userID)!
-            print("Login success, Requesing user email id...")
-            
-            //Get user email...
-            SMTwitterSignIn.sharedInstance.requestTwitterEmail { (session, email, statusMessageEmail, isSuccess) in
+            if(isSuccess){
                 
-                if(isSuccess)!{
-                    //Procedd on success...
-                    print(statusMessageEmail! as Any)
-                    strUserEmail = email!
+                if(session != nil){
+                    strUserId = (session?.userID)!
                 }
-                else{
-                    //Stop on fail...
-                    print(statusMessageEmail! as Any)
-                }
+                print("Login success, Requesing user email id...")
                 
-                print("User Id: \(strUserId)")
-                print("User Email: \(strUserEmail)")
-                print("\(statusMessageLogin!) \n User Id: \(strUserId) \n User Email: \(strUserEmail)")
+                //Get user email...
+                SMTwitterSignIn.sharedInstance.requestTwitterEmail { (session, email, statusMessageEmail, isSuccess) in
+                    
+                    if(isSuccess){
+                        print(statusMessageEmail! as Any)
+                        if(email != nil){
+                            strUserEmail = email!
+                        }
+                    }
+                    else{
+                        print(statusMessageEmail! as Any)
+                    }
+                    
+                    print("User Id: \(strUserId)")
+                    print("User Email: \(strUserEmail)")
+                    Alert.showAlert(title: "Twitter", message: "\(statusMessageLogin!) \n User Id: \(strUserId) \n User Email: \(strUserEmail)")
+                }
+            }
+            else{
+                Alert.showAlert(title: "Twitter", message: statusMessageLogin!)
             }
         }
-        
     }
     
     @IBAction func btnTwitterSharePressed(_ sender: UIButton) {
@@ -74,7 +81,7 @@ class ViewController: UIViewController{
         
         SMTwitterSignIn.sharedInstance.shareOnTwitter(initialText: "USA flag picture will be tweeted", image: shareImg, videoURL: nil) { (session, statusMessage, isSuccess) in
             
-            if(isSuccess)!{
+            if(isSuccess){
                 //Procedd on success...
                 print(statusMessage as Any)
             }
@@ -90,7 +97,7 @@ class ViewController: UIViewController{
         //Get user email...
         SMTwitterSignIn.sharedInstance.requestTwitterEmail { (session, email, statusMessage, isSuccess) in
             
-            if(isSuccess)!{
+            if(isSuccess){
                 //Procedd on success...
                 print(statusMessage as Any)
                 print("User Email: \(String(describing: email))")

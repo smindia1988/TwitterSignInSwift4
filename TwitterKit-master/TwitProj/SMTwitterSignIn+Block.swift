@@ -27,8 +27,8 @@ import TwitterKit
 import TwitterCore
 
 private typealias loginCompletionHandler = ((_ statusMessage:String,_ isSuccess:Bool)->())?  //For internal login check callBack
-typealias completionHandler = ((_ session:TWTRAuthSession?, _ statusMessage:String?, _ isSuccess:Bool?)->())?  //For Login and Share callBack
-typealias emailCompletionHandler = ((_ session:TWTRAuthSession?, _ email:String?, _ statusMessage:String?, _ isSuccess:Bool?)->())? //For Email Permission callBack
+typealias completionHandler = ((_ session:TWTRAuthSession?, _ statusMessage:String?, _ isSuccess:Bool)->())?  //For Login and Share callBack
+typealias emailCompletionHandler = ((_ session:TWTRAuthSession?, _ email:String?, _ statusMessage:String?, _ isSuccess:Bool)->())? //For Email Permission callBack
 
 class SMTwitterSignIn: NSObject, TWTRComposerViewControllerDelegate {
     
